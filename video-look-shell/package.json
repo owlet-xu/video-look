@@ -1,0 +1,36 @@
+{
+  "name": "shell-electron-seed",
+  "productName": "shellElectronSeed",
+  "version": "1.0.0",
+  "description": "shell-electron-seed",
+  "main": "main/main.js",
+  "scripts": {
+    "start": "electron-scripts start",
+    "build": "electron-scripts build",
+    "test": "electron-scripts test",
+    "launch": "electron ./build/resources",
+    "preinstall": "npm config set ELECTRON_MIRROR=https://npm.taobao.org/mirrors/electron/"
+  },
+  "keywords": [
+    "shell-electron-seed"
+  ],
+  "author": "xuguoyuan",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^3.1.8",
+    "electron-editor-context-menu": "^1.1.1",
+    "electron-is-dev": "^1.1.0",
+    "fluent-ffmpeg": "^2.1.2",
+    "ipp": "^2.0.1",
+    "request": "^2.88.0",
+    "winston": "^3.1.0",
+    "winston-daily-rotate-file": "^4.2.1"
+  },
+  "devDependencies": {
+    "@mesamo/electron-scripts": "^0.1.8",
+    "@types/node": "^12.7.12",
+    "@types/request": "^2.48.3",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.4"
+  }
+}

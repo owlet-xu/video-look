@@ -1,0 +1,19 @@
+{
+  "mainWindowConfig": {
+    "loadURL": "http://localhost:8080",
+    "loadPath": "quality/index.html",
+    "openDevTools": false,
+    "isDebug": true,
+    "frame": true,
+    "resizable": true,
+    "fullScreen": false,
+    "webPreferences": {
+      "nodeIntegration": true,
+      "nativeWindowOpen": true
+    }
+  },
+  "dictConfig": {
+    "enable": true,
+    "lang": "es-ES"
+  }
+}

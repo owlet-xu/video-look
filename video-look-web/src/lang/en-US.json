@@ -1,0 +1,11 @@
+{
+  "Home": {
+    "HomePage": "Home Page",
+    "RoutePush": "RoutePush",
+    "LanguageChinese": "Chinese",
+    "LanguageEnglish": "English"
+  },
+  "IncidentType": {
+    "Title": "Title"
+  }
+}

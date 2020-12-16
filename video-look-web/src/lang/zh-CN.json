@@ -1,0 +1,9 @@
+{
+  "Home": {
+    "HomePage": "主页",
+    "CreateVideoPreview": "生成视频预览",
+    "LanguageChinese": "中文",
+    "LanguageEnglish": "英文",
+    "InputPath": "请输入文件夹名称，空为当前目录"
+  }
+}

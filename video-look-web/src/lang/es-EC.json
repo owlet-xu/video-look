@@ -1,0 +1,19 @@
+{
+  "Login": {
+    "Login": "Sign in",
+    "Logout": "Sing out",
+    "OK": "OK",
+		"Cancel": "Cancel",
+    "Username": "Username",
+    "RequireUsername": "Username is required",
+    "Password": "Password",
+    "RequirePassword": "Password is required",
+    "RememberPassword": "Remember Password",
+    "UsernameOrPasswordError": "Incorrect Username or Password",
+    "UserHasLoggedIn": "User has logged in",
+    "NoRole": "User doesn't have role",
+    "SystemError": "System Error",
+    "GetComputerNameFailed": "Failed to get Computer Name",
+    "GetSeatInfoFailed": "Failed to get Seat Information"
+	}
+}
