@@ -5,8 +5,9 @@
   "description": "shell-electron-seed",
   "main": "main/main.js",
   "scripts": {
-    "start": "electron-scripts start",
+    "start": "chcp 65001 && electron-scripts start",
     "build": "electron-scripts build",
+    "show": "chcp 65001 && electron-scripts start && electron ./build/resources",
     "test": "electron-scripts test",
     "launch": "electron ./build/resources",
     "preinstall": "npm config set ELECTRON_MIRROR=https://npm.taobao.org/mirrors/electron/"
