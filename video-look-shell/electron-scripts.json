@@ -13,11 +13,7 @@
     },
     "assets": [
       "package.json",
-      "public/config.json",
-      {
-        "input": "public/dict",
-        "output": "dict"
-      }
+      "public/config.json"
     ],
     "mainProcess": {
       "main": "src/main.ts",

@@ -1,6 +1,6 @@
-import { dialog, app } from 'electron';
+import { app } from 'electron';
 import { EventEmitter } from 'events';
-import { spawn } from 'child_process';
+// import { spawn } from 'child_process';
 import url from 'url';
 import path from 'path';
 import request from 'request';
@@ -68,26 +68,26 @@ export class AutoUpdater {
     if (!this.installerPath) {
       this.updater.emit('error', 'need to call in "update-downloaded" event');
     }
-    const title = this.result.appName;
-    const message = `Have available updates.
-    version: ${this.result.version}
-    time: ${this.result.updateTime}
-    ${this.result.description}
-    `;
-    const installerPath = this.installerPath;
-    dialog.showMessageBox(
-      { buttons: ['yes', 'no'], message, title, type: 'question' },
-      (response, r) => {
-        if (response === 0) {
-          spawn(installerPath, ['/SILENT'], {
-            detached: true,
-            stdio: ['ignore', 'ignore', 'ignore']
-          });
-          this.updater.emit('before-quit-for-update');
-          app.quit();
-        }
-      }
-    );
+    // const title = this.result.appName;
+    // const message = `Have available updates.
+    // version: ${this.result.version}
+    // time: ${this.result.updateTime}
+    // ${this.result.description}
+    // `;
+    // const installerPath = this.installerPath;
+    // dialog.showMessageBox(
+    //   { buttons: ['yes', 'no'], message, title, type: 'question' },
+    //   (response, r) => {
+    //     if (response === 0) {
+    //       spawn(installerPath, ['/SILENT'], {
+    //         detached: true,
+    //         stdio: ['ignore', 'ignore', 'ignore']
+    //       });
+    //       this.updater.emit('before-quit-for-update');
+    //       app.quit();
+    //     }
+    //   }
+    // );
   }
 
   public on(event: EventName, callback: (args: any) => void) {

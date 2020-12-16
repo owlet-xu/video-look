@@ -8,8 +8,7 @@
     "resizable": true,
     "fullScreen": false,
     "webPreferences": {
-      "nodeIntegration": true,
-      "nativeWindowOpen": true
+      "nodeIntegration": true
     }
   },
   "dictConfig": {
