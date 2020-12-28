@@ -1,5 +1,6 @@
 <template>
   <div>
+    <head-bar></head-bar>
     <el-radio-group class="language" v-model="language" @change="languageChange">
       <el-radio label="zh">{{ $t('Home.LanguageChinese') }}</el-radio>
       <el-radio label="en">{{ $t('Home.LanguageEnglish') }}</el-radio>

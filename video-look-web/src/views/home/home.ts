@@ -3,8 +3,14 @@ import { Action, Getter } from 'vuex-class';
 
 import { EventType } from '@/utils/ipc/ipc-event-type';
 import { IpcRenderer } from '@/utils/ipc/ipc-renderer';
+// components
+import HeadBar from '@/components/head/head.vue';
 
-@Component
+@Component({
+  components: {
+    HeadBar
+  }
+})
 export default class Home extends Vue {
   @Action('setLanguage') setLanguage!: (language: any) => void;
   @Getter('language') getLanguage!: string;

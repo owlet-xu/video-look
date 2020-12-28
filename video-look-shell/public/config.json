@@ -4,7 +4,7 @@
     "loadPath": "qiqi/index.html",
     "openDevTools": false,
     "isDebug": false,
-    "frame": true,
+    "frame": false,
     "resizable": true,
     "fullScreen": false,
     "webPreferences": {

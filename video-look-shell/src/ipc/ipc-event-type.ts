@@ -5,9 +5,9 @@ export const IpcEventType = {
     LOGIN_SUCCESS: 'login_success', // 登录成功
     APP_EXIT: 'app_exit', // 应用程序退出
     EXIT_PROCESS: 'exit_process', // 进程退出
+    SHOW_ITEM_IN_FOLDER: 'show_item_in_folder', // 打开文件所在目录
     WINDOW_MIN: 'window_min', // 窗口最小
-    WINDOW_MAX: 'window_max', // 窗口最大
-    SHOW_ITEM_IN_FOLDER: 'show_item_in_folder' // 打开文件所在目录
+    WINDOW_MAX: 'window_max' // 窗口最大
   },
   // 切换事件
   SWITCH: {
