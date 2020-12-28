@@ -18,8 +18,8 @@ export const constantRouterMap: RouteConfig[] = [
 ];
 
 const router = new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
+  // mode: 'history',
+  // base: process.env.BASE_URL,
   routes: constantRouterMap
 });
 
