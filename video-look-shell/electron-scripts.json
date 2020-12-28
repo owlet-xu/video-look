@@ -4,8 +4,8 @@
     "icon": "public/qiqi.ico",
     "asar": false,
     "product": {
-      "appId": "{{586C499D-143A-467A-9807-D1074B73a0d4}",
-      "dirName": "shellElectronSeed",
+      "appId": "{{586C488D-143A-467A-9807-D1074B73a0d4}",
+      "dirName": "video look",
       "publisher": "xuguoyuan",
       "copyright": "Copyright©2020 xuguoyuan, Inc",
       "arch": "x64",
@@ -25,7 +25,12 @@
       }
     },
     "rendererProcess": {
-      "projects": []
+      "projects": [
+        {
+          "input": "public/dist",
+          "output": "qiqi"
+        }
+      ]
     }
   },
   "download": {

@@ -24,6 +24,6 @@ export default class Home extends Vue {
 
   createVideoPreview() {
     console.log(this.path, '---this.path--');
-    IpcRenderer.send(EventType.BASE.CREATE_VIDEO_PREVIEW, this.path);
+    IpcRenderer.send(EventType.BIZ.CREATE_VIDEO_PREVIEW, this.path);
   }
 }

@@ -1,9 +1,9 @@
 {
   "mainWindowConfig": {
     "loadURL": "http://localhost:8080",
-    "loadPath": "quality/index.html",
+    "loadPath": "qiqi/index.html",
     "openDevTools": false,
-    "isDebug": true,
+    "isDebug": false,
     "frame": true,
     "resizable": true,
     "fullScreen": false,

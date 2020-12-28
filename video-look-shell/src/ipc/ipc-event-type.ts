@@ -7,10 +7,15 @@ export const IpcEventType = {
     EXIT_PROCESS: 'exit_process', // 进程退出
     WINDOW_MIN: 'window_min', // 窗口最小
     WINDOW_MAX: 'window_max', // 窗口最大
-    CREATE_VIDEO_PREVIEW: 'create_video_preview' // 创建视频缩略图
+    SHOW_ITEM_IN_FOLDER: 'show_item_in_folder' // 打开文件所在目录
   },
   // 切换事件
   SWITCH: {
     CHANGE_LANGUAGE: 'change_language' // 切换语言
+  },
+  BIZ: {
+    CREATE_VIDEO_PREVIEW: 'create_video_preview', // 创建视频缩略图
+    FIND_CHINESE_LANGUAGE: 'find_chinese_language', // 匹配本地字幕
+    SEND_CHINESE_LANGUAGE: 'send_chinese_language'// 发送匹配结果给前端
   }
 };

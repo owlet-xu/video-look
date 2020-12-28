@@ -1,0 +1,16 @@
+.match-chinese {
+    padding: 10px;
+    .search-container {
+        display: flex;
+        margin-bottom: 10px;
+        .el-input  {
+            width: 600px;
+            margin-right: 10px;
+        }
+    }
+    .count {
+        width: 100%;
+        text-align: left;
+        padding: 10px;
+    }
+}

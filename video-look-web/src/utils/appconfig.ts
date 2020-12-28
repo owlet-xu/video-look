@@ -3,7 +3,7 @@
  */
 import axios from 'axios';
 // const isDev = process.env.NODE_ENV === 'development';
-const configPath = '/config.json';
+const configPath = './config.json';
 
 const Config = async (store: any) => {
   const configs = await axios.get(configPath);
