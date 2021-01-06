@@ -1,7 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 import { shell } from 'electron';
-import childProcess from 'child_process'; // 多线程编程
 
 let videos: string[] = []; // 所有视频文件
 let chineses: string[] = []; // 所有字幕文件
@@ -14,7 +13,6 @@ export const showItemInFolder = (path: string) => {
 
 export const matchChinese = async (pathChinese: string, pathVideo: string): Promise<any> => {
     return new Promise((resolve, reject) => {
-        childProcess.fork('./match-chinese.ts');
         videos = [];
         chineses = [];
         matchs = [];

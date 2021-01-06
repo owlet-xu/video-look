@@ -8,6 +8,7 @@
     <div class="tab-bar">
       <router-link class="tab-item" active-class="tab-item-active" to="/video-preview">生成视频预览</router-link>
       <router-link class="tab-item" active-class="tab-item-active" to="/match-chinese">匹配字幕</router-link>
+      <router-link class="tab-item" active-class="tab-item-active" to="/find-file">查找文件夹</router-link>
     </div>
     <router-view></router-view>
   </div>

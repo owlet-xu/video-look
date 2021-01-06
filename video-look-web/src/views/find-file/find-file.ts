@@ -4,15 +4,15 @@ import { EventType } from '@/utils/ipc/ipc-event-type';
 import { IpcRenderer } from '@/utils/ipc/ipc-renderer';
 
 @Component
-export default class MatchChinese extends Vue {
+export default class FindFile extends Vue {
 
-    private pathChinese = 'E:\\BaiduNetdiskDownload\\15500+字幕\\15500+字幕';
-    private pathVideo = 'F:\\迅雷下载';
+    private pathSource = '';
+    private keyWords = '';
     private result = [];
     private loading = false;
 
     created() {
-        IpcRenderer.on(EventType.BIZ.FIND_CHINESE_LANGUAGE_RESULT).subscribe((res: any) => {
+        IpcRenderer.on(EventType.BIZ.FIND_FILE_RESULT).subscribe((res: any) => {
             if (!Array.isArray(res.args) || res.args.length === 0) {
                 return;
             }
@@ -24,8 +24,8 @@ export default class MatchChinese extends Vue {
 
     matchChinese() {
         this.loading = true;
-        const data = { pathChinese: this.pathChinese, pathVideo: this.pathVideo };
-        IpcRenderer.send(EventType.BIZ.FIND_CHINESE_LANGUAGE, data);
+        const data = { pathSource: this.pathSource, keyWords: this.keyWords };
+        IpcRenderer.send(EventType.BIZ.FIND_FILE, data);
     }
 
     showItemInFolder(path: string) {

@@ -16,6 +16,8 @@ export const IpcEventType = {
   BIZ: {
     CREATE_VIDEO_PREVIEW: 'create_video_preview', // 创建视频缩略图
     FIND_CHINESE_LANGUAGE: 'find_chinese_language', // 匹配本地字幕
-    SEND_CHINESE_LANGUAGE: 'send_chinese_language'// 发送匹配结果给前端
+    FIND_CHINESE_LANGUAGE_RESULT: 'find_chinese_language_result', // 匹配本地字幕结果
+    FIND_FILE: 'find_file', // 查找文件夹
+    FIND_FILE_RESULT: 'find_file_result' // 查找文件夹结果
   }
 };

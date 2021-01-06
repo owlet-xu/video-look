@@ -10,6 +10,7 @@ import {
 } from '../ui/main-window';
 import { doFiles } from '../common/video-preview';
 import { matchChinese, showItemInFolder } from '../common/match-chinese';
+import { searchPath } from '../common/file-utils';
 
 export function startAllListeners() {
   ipcMain.on(IpcEventType.BASE.APP_EXIT, (event: any, args: any) => {
@@ -72,12 +73,14 @@ export function startAllListeners() {
   ipcMain.on(IpcEventType.BIZ.FIND_CHINESE_LANGUAGE, (event: any, args: any) => {
     console.log(args, '---FIND_CHINESE_LANGUAGE---');
     const [data] = args;
-    console.log(11111111);
     matchChinese(data.pathChinese, data.pathVideo).then((res: any) => {
-      console.log(3333333333);
-      sendEventToMainWindow(IpcEventType.BIZ.SEND_CHINESE_LANGUAGE, res);
+      sendEventToMainWindow(IpcEventType.BIZ.FIND_CHINESE_LANGUAGE_RESULT, res);
     });
-    console.log(22222222222);
+  });
+
+  ipcMain.on(IpcEventType.BIZ.FIND_FILE, (event: any, args: any) => {
+    const [data] = args;
+    sendEventToMainWindow(IpcEventType.BIZ.FIND_FILE_RESULT, searchPath(data.pathSource, data.keyWords));
   });
 }
 
