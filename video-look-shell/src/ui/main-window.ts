@@ -8,7 +8,6 @@ const appPath = app.getAppPath();
 const preloadPath = path.join(appPath, 'main/preload.js');
 
 let window: BrowserWindow | null;
-let incidentWindow: BrowserWindow | null; // 警情选择子窗口
 let loadUrl = ''; // 加载的url
 
 export function createMainWindow() {
@@ -28,7 +27,6 @@ export function createMainWindow() {
   window.on('ready-to-show', () => {
     if (window) {
       window.show();
-      // window.maximize();
     }
   });
 
@@ -44,13 +42,12 @@ export function createMainWindow() {
 }
 
 export function openMainWindow() {
-  if (!window) return;
-
+  if (!window) {
+    return;
+  }
   if (mainWindowConfig.openDevTools) {
     window.webContents.openDevTools();
   }
-
-
   if (mainWindowConfig.isDebug) {
     loadUrl = mainWindowConfig.loadURL;
   } else {
@@ -73,8 +70,4 @@ export function closeMainWindow() {
 
 export function getMainWindow(): BrowserWindow {
   return window as BrowserWindow;
-}
-
-export function getIncidentWindow(): BrowserWindow {
-  return incidentWindow as BrowserWindow;
 }

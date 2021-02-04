@@ -1,16 +1,13 @@
-import { ipcMain, BrowserWindow } from 'electron';
+import { ipcMain } from 'electron';
 
-// import logger from '../common/logger';
+import logger from '../common/logger';
 import { eventQueue } from './event-queue';
 import { IpcEventType } from './ipc-event-type';
-import {
-  closeMainWindow,
-  getMainWindow,
-  getIncidentWindow
-} from '../ui/main-window';
+import { closeMainWindow, getMainWindow, } from '../ui/main-window';
 import { doFiles } from '../common/video-preview';
 import { matchChinese, showItemInFolder } from '../common/match-chinese';
 import { searchPath } from '../common/file-utils';
+import { cutFilesToOnePath } from '../common/cut-files';
 
 export function startAllListeners() {
   ipcMain.on(IpcEventType.BASE.APP_EXIT, (event: any, args: any) => {
@@ -56,17 +53,9 @@ export function startAllListeners() {
     getMainWindow().minimize();
   });
 
-  ipcMain.on(IpcEventType.SWITCH.CHANGE_LANGUAGE, (event: any, args: any) => {
-    if (args) {
-      const [command] = args;
-      const win: BrowserWindow = getIncidentWindow();
-      win.webContents.send(IpcEventType.SWITCH.CHANGE_LANGUAGE, command);
-    }
-  });
-
   ipcMain.on(IpcEventType.BIZ.CREATE_VIDEO_PREVIEW, (event: any, args: any) => {
     const [path] = args;
-    console.log(path, '---CREATE_VIDEO_PREVIEW---');
+    logger.info('---CREATE_VIDEO_PREVIEW---', path);
     doFiles(path);
   });
 
@@ -81,6 +70,12 @@ export function startAllListeners() {
   ipcMain.on(IpcEventType.BIZ.FIND_FILE, (event: any, args: any) => {
     const [data] = args;
     sendEventToMainWindow(IpcEventType.BIZ.FIND_FILE_RESULT, searchPath(data.pathSource, data.keyWords));
+  });
+
+  ipcMain.on(IpcEventType.BIZ.CUT_FILES, (event: any, args: any) => {
+    const [data] = args;
+    logger.info('---CUT_FILES---', data);
+    cutFilesToOnePath(data.sourcePath, data.targetPath);
   });
 }
 

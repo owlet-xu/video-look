@@ -18,6 +18,7 @@ export const IpcEventType = {
     FIND_CHINESE_LANGUAGE: 'find_chinese_language', // 匹配本地字幕
     FIND_CHINESE_LANGUAGE_RESULT: 'find_chinese_language_result', // 匹配本地字幕结果
     FIND_FILE: 'find_file', // 查找文件夹
-    FIND_FILE_RESULT: 'find_file_result' // 查找文件夹结果
+    FIND_FILE_RESULT: 'find_file_result', // 查找文件夹结果
+    CUT_FILES: 'cut_files' // 剪切文件到指定目录
   }
 };

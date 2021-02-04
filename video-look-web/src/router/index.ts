@@ -5,6 +5,7 @@ import Home from '../views/home/home.vue';
 import VideoPreview from '../views/video-preview/video-preview.vue';
 import MatchChinese from '../views/match-chinese/match-chinese.vue';
 import FindFile from '../views/find-file/find-file.vue';
+import CutFiles from '../views/cut-files/cut-files.vue';
 
 Vue.use(Router);
 
@@ -14,7 +15,8 @@ export const constantRouterMap: RouteConfig[] = [
     children: [
       {path: '/video-preview', name: 'Router.VideoPreview', component: VideoPreview},
       {path: '/match-chinese', name: 'Router.MatchChinese', component: MatchChinese},
-      {path: '/find-file', name: 'Router.FindFile', component: FindFile}
+      {path: '/find-file', name: 'Router.FindFile', component: FindFile},
+      {path: '/cut-files', name: 'Router.CutFiles', component: CutFiles}
     ]
   }
 ];

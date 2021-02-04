@@ -3,7 +3,7 @@
     "loadURL": "http://localhost:8080",
     "loadPath": "qiqi/index.html",
     "openDevTools": false,
-    "isDebug": true,
+    "isDebug": false,
     "frame": false,
     "resizable": true,
     "fullScreen": false,

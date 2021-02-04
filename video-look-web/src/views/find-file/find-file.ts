@@ -6,7 +6,7 @@ import { IpcRenderer } from '@/utils/ipc/ipc-renderer';
 @Component
 export default class FindFile extends Vue {
 
-    private pathSource = '';
+    private pathSource = 'E:\\moves\\字幕\\所有字幕';
     private keyWords = '';
     private result = [];
     private loading = false;
