@@ -5,18 +5,18 @@ let files: string[] = [];
 
 /**
  * 获取文件夹的所有文件
- * @param path 
+ * @param pathTemp
  */
-export const getFilesPath = (path: string) => {
+export const getFilesPath = (pathTemp: string) => {
     files = [];
-    findFiles(path);
+    findFiles(pathTemp);
     return files;
 };
 
 /**
  * 复制文件
- * @param src 
- * @param dest 
+ * @param src
+ * @param dest
  */
 export const copyFileSync = (src: string, dest: string) => {
     fs.copyFileSync(src, dest);
@@ -31,14 +31,19 @@ export const renameSync = (oldPath: string, newPath: string) => {
 
 /**
  * 搜索文件夹文件 不区分大小写，空格分词
- * @param src
+ * @param src 英文逗号分隔
  * @param keyWord
  */
 export const searchPath = (src: string, keyWords: string): any[] => {
+    const srcs = src.split(',');
+    let filesTemp: string[] = [];
+    srcs.forEach((item: string) => {
+        filesTemp = filesTemp.concat(getFilesPath(item));
+    });
     const keyWordss: string[] = keyWords.split(' ');
-    const files = getFilesPath(src);
+    
     const res: any[] = [];
-    files.forEach((item: string) => {
+    filesTemp.forEach((item: string) => {
         const basename = path.basename(item);
         if (keyWordss.every(key => isMatch(basename, key))) {
             res.push({path: item});
@@ -60,8 +65,8 @@ const isMatch = (str1: string, str2: string) => {
  * @param {*} mypath
  */
 const findFiles = (mypath: string) => {
-    const files = fs.readdirSync(mypath); // 同步写法
-    files.forEach((filename: string) => {
+    const filesTemp = fs.readdirSync(mypath); // 同步写法
+    filesTemp.forEach((filename: string) => {
         // 获取当前文件的绝对路径
         const filedir = path.join(mypath, filename);
         findPath(filedir);

@@ -2,9 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import createLogger from 'vuex/dist/logger';
 
-import app from '../store/modules-store/app';
-import getters from '../store/getters';
-
+import app from './modules-store/app-module';
 
 Vue.use(Vuex);
 
@@ -13,7 +11,6 @@ const store = new Vuex.Store({
   modules: {
     app
   },
-  getters,
   plugins: isDev ? [createLogger({})] : []
 });
 

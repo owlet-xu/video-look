@@ -3,7 +3,7 @@ import { ipcMain } from 'electron';
 import logger from '../common/logger';
 import { eventQueue } from './event-queue';
 import { IpcEventType } from './ipc-event-type';
-import { closeMainWindow, getMainWindow, } from '../ui/main-window';
+import { closeMainWindow, getMainWindow } from '../ui/main-window';
 import { doFiles } from '../common/video-preview';
 import { matchChinese, showItemInFolder } from '../common/match-chinese';
 import { searchPath } from '../common/file-utils';
@@ -81,5 +81,7 @@ export function startAllListeners() {
 
 function sendEventToMainWindow(eventType: string, args: any) {
   const win = getMainWindow();
-  win && win.webContents.send(eventType, args);
+  if(win) {
+    win.webContents.send(eventType, args)
+  }
 }

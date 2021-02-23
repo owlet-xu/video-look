@@ -5,6 +5,7 @@ import { EventType } from '@/utils/ipc/ipc-event-type';
 import { IpcRenderer } from '@/utils/ipc/ipc-renderer';
 // components
 import HeadBar from '@/components/head/head.vue';
+import { AppTypes } from '@/store/types/app-types';
 
 @Component({
   components: {
@@ -12,8 +13,8 @@ import HeadBar from '@/components/head/head.vue';
   }
 })
 export default class Home extends Vue {
-  @Action('setLanguage') setLanguage!: (language: any) => void;
-  @Getter('language') getLanguage!: string;
+  @Action(AppTypes.actions.SET_LANGUAGE) setLanguage!: (language: any) => void;
+  @Getter(AppTypes.getters.LANGUAGE) getLanguage!: string;
 
   private language = '';
   private path = 'video';
