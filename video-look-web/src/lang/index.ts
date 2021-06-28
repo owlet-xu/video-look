@@ -2,10 +2,11 @@
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
 import Cookies from 'js-cookie';
+import { AppTypes } from '../store/types/app-types';
+import store from '../store';
 
 const zh = require ('./zh-CN.json');
 const en = require ('./en-US.json');
-const es = require('./es-EC.json');
 const elementEnLocale = require ('element-ui/lib/locale/lang/en'); // element-ui lang
 const elementZhLocale = require ('element-ui/lib/locale/lang/zh-CN'); // element-ui lang
 const elementEsLocale = require ('element-ui/lib/locale/lang/es'); // element-ui lang
@@ -24,15 +25,12 @@ const messages = {
   zh: {
     ...zh,
     ...elementZhLocale
-  },
-  es: {
-    ...es,
-    ...elementEsLocale
   }
 };
 
 const i18n = new VueI18n({
-  locale: Cookies.get('language') || 'zh',
+  // locale: Cookies.get('language') || 'zh',
+  locale: store.getters[AppTypes.getters.LANGUAGE] || 'zh',
   messages
 });
 // 解决Element-ui组件内的词条

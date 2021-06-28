@@ -13,7 +13,7 @@ import { AppTypes } from '@/store/types/app-types';
   }
 })
 export default class Home extends Vue {
-  @Action(AppTypes.actions.SET_LANGUAGE) setLanguage!: (language: any) => void;
+  @Action(AppTypes.actions.SET_LANGUAGE) setLanguage!: (language: string) => void;
   @Getter(AppTypes.getters.LANGUAGE) getLanguage!: string;
 
   private language = '';
@@ -24,9 +24,12 @@ export default class Home extends Vue {
     console.log(this.language);
   }
 
-  languageChange(val: any) {
-    this.setLanguage(val);
-    this.$router.go(0);
+  languageChange(lang: string) {
+    this.setLanguage(lang);
+    // 不用刷新路由
+    this.$i18n.locale = lang;
+    // 刷新路由更新
+    // this.$router.go(0);
   }
 
   createVideoPreview() {
