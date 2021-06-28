@@ -4,12 +4,12 @@ import { shell } from 'electron';
 
 let videos: string[] = []; // 所有视频文件
 let chineses: string[] = []; // 所有字幕文件
-let matchs: {vname: string, cname: string, match: string} [] = []; // 匹配成功的文件
+let matchs: { vname: string, cname: string, match: string }[] = []; // 匹配成功的文件
 let currType: 'video' | 'chinese' = 'chinese';
 
-export const showItemInFolder = (path: string) => {
-    shell.showItemInFolder(path);
-}
+export const showItemInFolder = (pathTemp: string) => {
+    shell.showItemInFolder(pathTemp);
+};
 
 export const matchChinese = async (pathChinese: string, pathVideo: string): Promise<any> => {
     return new Promise((resolve, reject) => {
@@ -60,30 +60,30 @@ const findPath = (mypath: string) => {
 const compareNames = () => {
     videos.forEach((vname: string) => {
         const match = isMatch(vname);
-        match.cname && matchs.push({vname, cname: match.cname, match: match.match});
+        match.cname && matchs.push({ vname, cname: match.cname, match: match.match });
     });
 };
 
 /**
- * 
+ * 匹配
  * @param videoPath
  */
-const isMatch = (videoPath: string): {cname: string | undefined, match: string} => {
+const isMatch = (videoPath: string): { cname: string | undefined, match: string } => {
     const vname = subExtra(path.basename(videoPath)); // 视频名称
     let match = ''; // 匹配上的字母
     const cname = chineses.find((p) => {
         const ps = getAvCard(p); // 车牌解析
-        return ps.findIndex((cname: string) => {
-            cname = subExtra(cname); // 去-，后最等
-            if (cname.length > 3 && vname.indexOf(cname) > -1) { // 
-                match = cname;
+        return ps.findIndex((cname2: string) => {
+            cname2 = subExtra(cname2); // 去-，后最等
+            if (cname2.length > 3 && vname.indexOf(cname2) > -1) {
+                match = cname2;
                 return true;
             } else {
                 return false;
             }
         }) > -1;
     });
-    return {cname, match};
+    return { cname, match };
 };
 
 /**
@@ -102,7 +102,7 @@ const getAvCard = (p: string) => {
  */
 const subExtra = (p: string) => {
     const extname = path.extname(p);
-    return p.replace(extname, '').replace('-', '').replace('_', '').replace(/[^a-zA-Z\d]/g,'').toLocaleLowerCase();
+    return p.replace(extname, '').replace('-', '').replace('_', '').replace(/[^a-zA-Z\d]/g, '').toLocaleLowerCase();
 };
 
 /**

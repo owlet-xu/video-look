@@ -27,7 +27,7 @@ export const copyFileSync = (src: string, dest: string) => {
  */
 export const renameSync = (oldPath: string, newPath: string) => {
     fs.renameSync(oldPath, newPath);
-}
+};
 
 /**
  * 搜索文件夹文件 不区分大小写，空格分词
@@ -41,7 +41,7 @@ export const searchPath = (src: string, keyWords: string): any[] => {
         filesTemp = filesTemp.concat(getFilesPath(item));
     });
     const keyWordss: string[] = keyWords.split(' ');
-    
+
     const res: any[] = [];
     filesTemp.forEach((item: string) => {
         const basename = path.basename(item);
@@ -50,15 +50,15 @@ export const searchPath = (src: string, keyWords: string): any[] => {
         }
     });
     return res;
-}
+};
 
 const getSimpleName = (str: string) => {
     return str.toLocaleLowerCase();
-}
+};
 
 const isMatch = (str1: string, str2: string) => {
     return getSimpleName(str1).indexOf(getSimpleName(str2)) > -1;
-}
+};
 
 /**
  * 传入一个文件路径，遍历路径下的文件和文件夹

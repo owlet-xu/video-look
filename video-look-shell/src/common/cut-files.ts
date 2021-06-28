@@ -15,12 +15,12 @@ export const cutFilesToOnePath = (sourcePath: string, targetPath: string) => {
         renameSync(item, target);
         ++index;
         logProcess(index);
-    })
+    });
     console.log(`成功移动了${index}个文件！`);
 };
 
 const logProcess = (index: number) => {
-    readline.clearLine(process.stdout, 0);    //移动光标到行首
-    readline.cursorTo(process.stdout, 0,0)
-    process.stdout.write(`---${index}---`,'utf-8');
+    readline.clearLine(process.stdout, 0);    // 移动光标到行首
+    readline.cursorTo(process.stdout, 0, 0);
+    process.stdout.write(`---${index}---`, 'utf-8');
 };
