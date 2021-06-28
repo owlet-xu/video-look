@@ -1,5 +1,6 @@
 <template>
   <div class="match-chinese">
+    <p class="tips">功能是分析字幕文件和电影文件的名称特征匹配</p>
     <div class="search-container">
       <el-input v-model="pathChinese" :placeholder="$t('请输入字幕文件夹')">
         <template slot="prepend">字幕文件夹：</template>
