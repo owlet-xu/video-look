@@ -21,6 +21,7 @@ export default class Home extends Vue {
 
   created() {
     this.language = this.getLanguage;
+    this.$i18n.locale = this.getLanguage;
     console.log(this.language);
   }
 

@@ -1,7 +1,6 @@
 // tslint:disable
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
-import Cookies from 'js-cookie';
 import { AppTypes } from '../store/types/app-types';
 import store from '../store';
 
@@ -27,10 +26,9 @@ const messages = {
     ...elementZhLocale
   }
 };
-
+// console.log(store.getters[AppTypes.getters.LANGUAGE], '--ddd--');
 const i18n = new VueI18n({
-  // locale: Cookies.get('language') || 'zh',
-  locale: store.getters[AppTypes.getters.LANGUAGE] || 'zh',
+  locale: store.getters[AppTypes.getters.LANGUAGE],
   messages
 });
 // 解决Element-ui组件内的词条
