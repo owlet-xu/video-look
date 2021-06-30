@@ -31,7 +31,7 @@ export function createMainWindow() {
   });
 
   window.on('close', event => {
-    closeMainWindow();
+    // 渲染进程通知关闭
   });
 
   window.on('closed', () => {
