@@ -5,7 +5,7 @@
 ```  json
 "seed_window_config": {
     "loadURL":"http://localhost:4200",                                       // 调试模式时使用的url
-    "loadPath": "./node_modules/@gsafety/angular-seed/dist/index.html",      // 发布模式时引用已经打包好的前段工程
+    "loadPath": "./node_modules/@owlet/angular-seed/dist/index.html",      // 发布模式时引用已经打包好的前段工程
     "isShowDevTools": false,                                                 // 是否开启调试工具栏
     "isDebug": false,                                                        // true：调试模式  ， false：发布模式
     "width": 800,                                                            // 壳程序窗体宽度

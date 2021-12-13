@@ -83,7 +83,7 @@ shell-electron-seed/
   |  |  └─ RELEASES                                - 安装文件依赖包标识和增量更新关系
   └─ docs/                                         - 文档相关目录
   |- node_modules/                                 - 依赖的第三方node组件
-  |  |- @gsafety/                                  - 自定义上传的npm包
+  |  |- @owlet/                                  - 自定义上传的npm包
   |  |- gulp/
   |  |- webpack/
   |  └─ <other npm modules>/                       - 

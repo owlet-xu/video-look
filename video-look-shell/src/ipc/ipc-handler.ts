@@ -69,7 +69,7 @@ export function startAllListeners() {
 
   ipcMain.on(IpcEventType.BIZ.FIND_FILE, (event: any, args: any) => {
     const [data] = args;
-    sendEventToMainWindow(IpcEventType.BIZ.FIND_FILE_RESULT, searchPath(data.pathSource, data.keyWords));
+    sendEventToMainWindow(IpcEventType.BIZ.FIND_FILE_RESULT, searchPath(data.pathSource, data.keyWords, data.type));
   });
 
   ipcMain.on(IpcEventType.BIZ.CUT_FILES, (event: any, args: any) => {

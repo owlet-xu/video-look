@@ -25,6 +25,10 @@ export default class FindFile extends Vue {
         });
     }
 
+    /**
+     * 递归查找文件夹
+     * @returns
+     */
     findFiles() {
         if (!this.pathSource || !this.keyWords) {
             this.$message.warning('请输入信息');
@@ -32,6 +36,19 @@ export default class FindFile extends Vue {
         }
         this.loading = true;
         const data = { pathSource: this.pathSource, keyWords: this.keyWords };
+        IpcRenderer.send(EventType.BIZ.FIND_FILE, data);
+    }
+
+    /**
+     * 只查询当前
+     */
+    findFilesNoDeep() {
+        if (!this.pathSource || !this.keyWords) {
+            this.$message.warning('请输入信息');
+            return;
+        }
+        this.loading = true;
+        const data = { pathSource: this.pathSource, keyWords: this.keyWords, type: 'nodeep' };
         IpcRenderer.send(EventType.BIZ.FIND_FILE, data);
     }
 

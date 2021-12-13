@@ -14,6 +14,16 @@ export const getFilesPath = (pathTemp: string) => {
 };
 
 /**
+ * 获取当前文件夹的文件和文件夹
+ * @param pathTemp
+ */
+ export const getFileAndPath = (pathTemp: string) => {
+    files = [];
+    findFiles(pathTemp);
+    return files;
+};
+
+/**
  * 复制文件
  * @param src
  * @param dest
@@ -33,15 +43,21 @@ export const renameSync = (oldPath: string, newPath: string) => {
  * 搜索文件夹文件 不区分大小写，空格分词
  * @param src 英文逗号分隔
  * @param keyWord
+ * @param type nodeep只搜索当前文件夹
  */
-export const searchPath = (src: string, keyWords: string): any[] => {
+export const searchPath = (src: string, keyWords: string, type: string): any[] => {
+    // 1、获取传入路径src，所有文件信息
     const srcs = src.split(',');
     let filesTemp: string[] = [];
     srcs.forEach((item: string) => {
-        filesTemp = filesTemp.concat(getFilesPath(item));
+        if(type && type === 'nodeep') {
+            filesTemp = filesTemp.concat(getFilesAndPathNoDeep(item));
+        } else {
+            filesTemp = filesTemp.concat(getFilesPath(item));
+        }
     });
     const keyWordss: string[] = keyWords.split(' ');
-
+    // 2、关键字过滤步骤1的文件信息，返回结果
     const res: any[] = [];
     filesTemp.forEach((item: string) => {
         const basename = path.basename(item);
@@ -50,6 +66,16 @@ export const searchPath = (src: string, keyWords: string): any[] => {
         }
     });
     return res;
+};
+
+const getFilesAndPathNoDeep = (mypath: string) => {
+    const temp: string[] = [];
+    const filesTemp = fs.readdirSync(mypath); // 同步写法
+    filesTemp.forEach((filename: string) => {
+        // 获取当前文件的绝对路径
+        temp.push(path.join(mypath, filename));
+    });
+    return temp;
 };
 
 const getSimpleName = (str: string) => {
@@ -75,6 +101,8 @@ const findFiles = (mypath: string) => {
 
 /**
  * 判断路径是文件还是文件夹
+ * 文件,加入到文件列表中
+ * 文件夹，继续搜索
  * @param {*} mypath
  */
 const findPath = (mypath: string) => {

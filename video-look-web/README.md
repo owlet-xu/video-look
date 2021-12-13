@@ -76,3 +76,9 @@ violet-seed
 ├── tslint.json                          ts静态质量检查配置文件
 └── vue.config.js                        vue配置文件，vue-cli3简化了原有版本webpack相关所有配置信息，提供了默认配置，如果需要自定 义部分配置，可使用此文件进行全局处理
 ```  
+
+## 发包
+```
+npm run build
+```
+生成dist文件夹
