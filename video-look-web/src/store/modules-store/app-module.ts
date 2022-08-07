@@ -8,7 +8,7 @@ const getters: GetterTree<AppState, AppState> = {
   [AppTypes.getters.LANGUAGE]: (state: any) => {
     const language = MySessionStorage.getItem(SessionStorageKeys.language);
     // 这里设置默认启动语言
-    return language || state.lang || state.configs.lang || 'en';
+    return language || state.lang || state.configs.lang || 'zh';
   },
 };
 

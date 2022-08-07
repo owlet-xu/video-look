@@ -7,7 +7,7 @@
     </el-radio-group>
     <div class="tab-bar">
       <router-link class="tab-item" active-class="tab-item-active" to="/video-preview">{{$t('生成视频预览')}}</router-link>
-      <router-link class="tab-item" active-class="tab-item-active" to="/match-chinese">{{$t('移动文件')}}</router-link>
+      <router-link class="tab-item" active-class="tab-item-active" to="/match-chinese">{{$t('匹配字幕')}}</router-link>
       <router-link class="tab-item" active-class="tab-item-active" to="/find-file">{{$t('查找文件夹')}}</router-link>
       <router-link class="tab-item" active-class="tab-item-active" to="/cut-files">{{$t('移动文件')}}</router-link>
     </div>

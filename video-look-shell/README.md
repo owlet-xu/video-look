@@ -49,7 +49,10 @@
 *  git提交谓词控制
 
 ## 5. 开发文档
-暂无！
+
+### 调试
+
+npm run show
 
 ## 6. shell-electron-seed工程结构图及说明
 

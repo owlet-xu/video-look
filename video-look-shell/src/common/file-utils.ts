@@ -17,7 +17,7 @@ export const getFilesPath = (pathTemp: string) => {
  * 获取当前文件夹的文件和文件夹
  * @param pathTemp
  */
- export const getFileAndPath = (pathTemp: string) => {
+export const getFileAndPath = (pathTemp: string) => {
     files = [];
     findFiles(pathTemp);
     return files;
@@ -50,7 +50,7 @@ export const searchPath = (src: string, keyWords: string, type: string): any[] =
     const srcs = src.split(',');
     let filesTemp: string[] = [];
     srcs.forEach((item: string) => {
-        if(type && type === 'nodeep') {
+        if (type && type === 'nodeep') {
             filesTemp = filesTemp.concat(getFilesAndPathNoDeep(item));
         } else {
             filesTemp = filesTemp.concat(getFilesPath(item));
@@ -62,11 +62,41 @@ export const searchPath = (src: string, keyWords: string, type: string): any[] =
     filesTemp.forEach((item: string) => {
         const basename = path.basename(item);
         if (keyWordss.every(key => isMatch(basename, key))) {
-            res.push({path: item});
+            res.push({ path: item });
         }
     });
     return res;
 };
+
+export const findRepeat = (sourcePath: string, targetPath: string, ignoreChars: string, type: number) => {
+    // 1、获取传入路径sourcePath，所有文件信息
+    const filesTemp1 = getFilesPath(sourcePath);
+    const filesTemp2 = getFilesPath(targetPath);
+
+    // 2、返回结果
+    const res: any[] = [];
+    const baseNamesTemp: any[] = [];
+    filesTemp1.forEach((item: string) => {
+        let basename = path.basename(item);
+        if (ignoreChars) {
+            basename = basename.replace(ignoreChars, '');
+        }
+        baseNamesTemp.push(basename);
+    });
+    filesTemp2.forEach((item: string) => {
+        let basename = path.basename(item);
+        const isHave = baseNamesTemp.includes(basename);
+        if (ignoreChars) {
+            basename = basename.replace(ignoreChars, '');
+        }
+        if (isHave && type === 0) {
+            res.push({ path: item });
+        } else if (!isHave && type === 1) {
+            res.push({ path: item });
+        }
+    });
+    return res;
+}
 
 const getFilesAndPathNoDeep = (mypath: string) => {
     const temp: string[] = [];

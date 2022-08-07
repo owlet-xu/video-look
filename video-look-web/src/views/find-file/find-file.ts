@@ -13,6 +13,11 @@ export default class FindFile extends Vue {
     private result = [];
     private loading = false;
 
+    private sourcePath = 'E:\\a';
+    private targetPath = 'E:\\a\\b\\';
+    private ignoreChars = '';
+
+
     created() {
         this.pathSource = this.configs.defaultSearchPath;
         IpcRenderer.on(EventType.BIZ.FIND_FILE_RESULT).subscribe((res: any) => {
@@ -54,5 +59,19 @@ export default class FindFile extends Vue {
 
     showItemInFolder(path: string) {
         IpcRenderer.send(EventType.BASE.SHOW_ITEM_IN_FOLDER, path);
+    }
+
+    /**
+     * 查找重复和不重复
+     * @param type 0 重复的，1不重复的
+     */
+    findRepeat(type: number) {
+        if (!this.sourcePath || !this.targetPath) {
+            this.$message.warning('请输入信息');
+            return;
+        }
+        this.loading = true;
+        const data = { sourcePath: this.sourcePath, targetPath: this.targetPath, ignoreChars: this.ignoreChars, type };
+        IpcRenderer.send(EventType.BIZ.FIND_REPEAT, data);
     }
 }

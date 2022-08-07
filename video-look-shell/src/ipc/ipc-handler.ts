@@ -6,8 +6,8 @@ import { IpcEventType } from './ipc-event-type';
 import { closeMainWindow, getMainWindow } from '../ui/main-window';
 import { doFiles } from '../common/video-preview';
 import { matchChinese, showItemInFolder } from '../common/match-chinese';
-import { searchPath } from '../common/file-utils';
-import { cutFilesToOnePath } from '../common/cut-files';
+import { searchPath, findRepeat } from '../common/file-utils';
+import { cutFilesToOnePath, replaceChars } from '../common/cut-files';
 
 export function startAllListeners() {
   ipcMain.on(IpcEventType.BASE.APP_EXIT, (event: any, args: any) => {
@@ -69,6 +69,7 @@ export function startAllListeners() {
 
   ipcMain.on(IpcEventType.BIZ.FIND_FILE, (event: any, args: any) => {
     const [data] = args;
+    console.log(args, '---FIND_FILE---');
     sendEventToMainWindow(IpcEventType.BIZ.FIND_FILE_RESULT, searchPath(data.pathSource, data.keyWords, data.type));
   });
 
@@ -76,6 +77,18 @@ export function startAllListeners() {
     const [data] = args;
     logger.info('---CUT_FILES---', data);
     cutFilesToOnePath(data.sourcePath, data.targetPath);
+  });
+
+  ipcMain.on(IpcEventType.BIZ.REPLACE_CHARS, (event: any, args: any) => {
+    const [data] = args;
+    logger.info('---replace_chars---', data);
+    replaceChars(data.sourcePath, data.oldWords, data.newWords);
+  });
+
+  ipcMain.on(IpcEventType.BIZ.FIND_REPEAT, (event: any, args: any) => {
+    const [data] = args;
+    logger.info('---FIND_REPEAT---', data);
+    sendEventToMainWindow(IpcEventType.BIZ.FIND_FILE_RESULT, findRepeat(data.sourcePath, data.targetPath,data.ignoreChars, data.type));
   });
 }
 

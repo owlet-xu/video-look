@@ -68,13 +68,9 @@ const isVideoFile = (mypath: string) => {
     if (mypath.indexOf('-priview.mp4') !== -1) {
         return false;
     }
-    if (mypath.indexOf('.mp4') > -1 || mypath.indexOf('.mkv') > -1) {
-        return true;
-    }
-    if (mypath.indexOf('.avi') > -1 || mypath.indexOf('.wmv') > -1) {
-        return true;
-    }
-    return false;
+    const types = ['.mp4', '.mkv', '.avi', '.wmv', '.rmvb'];
+    const index = types.findIndex(type => mypath.indexOf(type) > -1);
+    return index > -1;
 };
 
 // 获取视频时长
